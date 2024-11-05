@@ -1,7 +1,7 @@
 # oop-php
 OOP in PHP, semester 1
 
-classes +
+classes, connect singleton +
 
 index.php +
 
