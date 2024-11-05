@@ -31,7 +31,7 @@ class bdConnection {
         }
     }
 
-    // Метод запуска ЗАПРОСОВ SQL
+    // Метод запуска ЗАПРОСОВ SQL (возвращает ассоциативный массив SELECT запроса)
     public function select($sql) {
         $this->sql = $sql;
         $result = $this->connection->query($sql);
@@ -42,7 +42,7 @@ class bdConnection {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Метод ВСТАВКИ запроса в Базу данных
+    // Метод ВСТАВКИ запроса в Базу данных (возвращает id запроса добавления)
     public function insert($sql) {
         $this->sql = $sql;
         if ($this->connection->query($sql) === true) {
@@ -53,7 +53,7 @@ class bdConnection {
         }
     }
 
-    // Метод ОБНОВЛЕНИЯ данных в Базе данных
+    // Метод ОБНОВЛЕНИЯ данных в Базе данных (возвращает id запроса обновления)
     public function update($sql) {
         $this->sql = $sql;
         if ($this->connection->query($sql) === true) {
