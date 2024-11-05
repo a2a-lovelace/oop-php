@@ -12,7 +12,7 @@ class User {
         $this->bdConnection = bdConnection::getInstance();
     }
 
-    // Метод РЕГИСТРАЦИЯ
+    // Метод РЕГИСТРАЦИЯ Валидация пароля, email // вернёт id
     public function register($username, $email, $password, $fio, $role) {
         // проверка ПОЧТЫ при регистрации
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -38,7 +38,7 @@ class User {
         return $userId; // возвращаем уникальный идентификатор ID
     }
 
-    // Метод ЛОГИН (запускаем только тех, кто есть в базе)
+    // Метод ЛОГИН (запускаем только тех, кто есть в базе) // войти в сессию записать параметры пользовател
     public function login($username, $password) {
         $sql = "SELECT * FROM users WHERE username = '$username'";
         $user = $this->bdConnection->select($sql);
@@ -52,13 +52,13 @@ class User {
         return false; // Пользователю не удалось войти
     }
 
-    // Метод ЛОГАУТ, то есть выход из сессии
+    // Метод ЛОГАУТ, то есть выход из сессии // удалить сессию
     public function logout() {
         session_start();
         session_destroy(); // осуществлен выход
     }
 
-    // Метод запроса данных по уникальному идентификатору
+    // Метод запроса данных по уникальному идентификатору // получить данные пользователя по id
     public function get($id) {
         $sql = "SELECT * FROM users WHERE id = $id";
         $user = $this->bdConnection->select($sql);
