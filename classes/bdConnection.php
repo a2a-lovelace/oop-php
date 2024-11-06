@@ -1,3 +1,4 @@
+<?php
 class bdConnection {
     private static $instance = null;
     private $connection;
