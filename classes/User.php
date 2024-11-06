@@ -7,7 +7,7 @@ class User {
     private $role;
     private $bdConnection;
 
-    // Конструктор соединения
+    // Конструктор соединения с Базой данных
     public function __construct() {
         $this->bdConnection = bdConnection::getInstance();
     }
